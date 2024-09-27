@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+\title{Pseudocode for Iterated Prisoner's Dilemma Strategies}
+\author{}
+\date{}
+\maketitle
+
+\section*{Iterated Prisoner's Dilemma Pseudocode}
+
+\begin{algorithm}
+\caption{Always Cooperate Strategy}
+\begin{algorithmic}[1]
+\Procedure{AlwaysCooperate}{$p$, $i$}
+\State $p[i] \gets 0$ \Comment{Always cooperate, represented by 0}
+\State \Return $p[i]$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Always Defect Strategy}
+\begin{algorithmic}[1]
+\Procedure{AlwaysDefect}{$p$, $i$}
+\State $p[i] \gets 1$ \Comment{Always defect, represented by 1}
+\State \Return $p[i]$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Tit For Tat Strategy}
+\begin{algorithmic}[1]
+\Procedure{TitForTat}{$p1$, $p2$, $i$}
+\If{$i = 0$}
+    \State $p1[i] \gets 0$ \Comment{Cooperate in the first round}
+\Else
+    \State $p1[i] \gets p2[i-1]$ \Comment{Mimic opponent's last action}
+\EndIf
+\State \Return $p1[i]$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{IPD Game Simulation}
+\begin{algorithmic}[1]
+\Procedure{IPDGameSimulation}{Strategy1, Strategy2, $p1$, $p2$}
+\For{$i \gets 0$ to $49$} \Comment{Simulate 50 rounds of the game}
+    \State Execute strategy for Player 1 based on Strategy1
+    \State Execute strategy for Player 2 based on Strategy2
+\EndFor
+\State Define payoff matrix
+\State Calculate total payoffs using calc\_payoffs
+\State Compare payoffs and determine winner
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
